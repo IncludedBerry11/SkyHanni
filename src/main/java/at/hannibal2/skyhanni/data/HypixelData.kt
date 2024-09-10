@@ -390,7 +390,7 @@ object HypixelData {
         var hypixel = false
 
         player.clientBrand?.let {
-            if (it.contains("hypixel", ignoreCase = true)) {
+            if (it.contains("fakepixel", ignoreCase = true)) {
                 hypixel = true
             }
         }
