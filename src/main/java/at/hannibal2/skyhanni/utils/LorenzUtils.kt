@@ -53,7 +53,7 @@ object LorenzUtils {
 
     val isOnAlphaServer get() = onHypixel && HypixelData.hypixelAlpha
 
-    val sidebar get() = mc.theWorld.getScoreboard().getObjectiveInDisplaySlot(1)
+    val sidebar get() = mc != null && mc.theWorld != null && mc.theWorld.getScoreboard().getObjectiveInDisplaySlot(1)
     
 	val inSkyBlock get() = sidebar != null && EnumChatFormatting.getTextWithoutFormattingCodes(sidebar.getDisplayName()).contains("SKYBLOCK")
 
