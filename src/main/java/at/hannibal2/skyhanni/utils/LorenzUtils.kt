@@ -55,7 +55,7 @@ object LorenzUtils {
 
     val sidebar get() = mc.theWorld.getScoreboard().getObjectiveInDisplaySlot(1)
     
-	val InSkyblock get() = sidebar != null && EnumChatFormatting.getTextWithoutFormattingCodes(sidebar.getDisplayName()).contains("SKYBLOCK")
+	val InSkyBlock get() = sidebar != null && EnumChatFormatting.getTextWithoutFormattingCodes(sidebar.getDisplayName()).contains("SKYBLOCK")
 
     val inHypixelLobby get() = onHypixel && HypixelData.inLobby
 
