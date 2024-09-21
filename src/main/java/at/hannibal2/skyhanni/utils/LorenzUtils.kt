@@ -31,6 +31,7 @@ import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.SharedMonsterAttributes
 import net.minecraft.util.AxisAlignedBB
 import net.minecraft.util.ChatComponentText
+import net.minecraft.util.EnumChatFormatting
 import net.minecraftforge.fml.common.FMLCommonHandler
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
@@ -42,13 +43,19 @@ import kotlin.time.Duration.Companion.seconds
 
 object LorenzUtils {
 
-    val connectedToHypixel get() = HypixelData.hypixelLive || HypixelData.hypixelAlpha
+    val mc get() = Minecraft.getMinecraft();
+    
+    val hpyixel get() = mc != null && mc.theWorld != null && mc.thePlayer != null && !mc.isSingleplayer() && mc.thePlayer.getClientBrand() == null && mc.thePlayer.getClientBrand().toLowerCase().contains("fakepixel")
 
-    val onHypixel get() = connectedToHypixel && Minecraft.getMinecraft().thePlayer != null
+    val connectedToHypixel get() = hpyixel
+
+    val onHypixel get() = hpyixel
 
     val isOnAlphaServer get() = onHypixel && HypixelData.hypixelAlpha
 
-    val inSkyBlock get() = onHypixel && HypixelData.skyBlock
+    val sidebar get() = mc.theWorld.getScoreboard().getObjectiveInDisplaySlot(1)
+    
+	val InSkyblock get() = sidebar != null && EnumChatFormatting.getTextWithoutFormattingCodes(sidebar.getDisplayName()).contains("SKYBLOCK")
 
     val inHypixelLobby get() = onHypixel && HypixelData.inLobby
 
